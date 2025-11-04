@@ -10,6 +10,7 @@ class SplashScreen1 extends StatefulWidget {
 
 class _SplashScreen1State extends State<SplashScreen1> {
   bool _isLoading = true;
+  bool _isVisible = false;
 
   @override
   void initState() {
@@ -18,6 +19,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
     Future.delayed(const Duration(seconds: 3), () {
       setState(() {
         _isLoading = false;
+        _isVisible = true;
       });
     });
   }
@@ -31,15 +33,19 @@ class _SplashScreen1State extends State<SplashScreen1> {
             ? const CircularProgressIndicator(
                 color: Colors.blueAccent,
               )
-         : Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Logo
-            Image.asset(
-              'assets/images/logo.png',
-              width: 150,
-              height: 150,
-            ),
+            : AnimatedOpacity(
+                opacity: _isVisible ? 1.0 : 0.0,
+                duration: const Duration(seconds: 1),
+                curve: Curves.easeIn,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                  // Logo
+                    Image.asset(
+                      'assets/images/logo.png',
+                      width: 150,
+                      height: 150,
+                    ),
 
             const SizedBox(height: 20),
             // Nama aplikasi
@@ -83,18 +89,19 @@ class _SplashScreen1State extends State<SplashScreen1> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: const Text(
-                  "Continue",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                  child: const Text(
+                    "Continue",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
-            ),
 
-          ],
+            ],
+          ),
         ),
       ),
     );
