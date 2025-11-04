@@ -28,6 +28,17 @@ class SplashScreen1 extends StatelessWidget {
                 color: Colors.blueAccent,
               ),
             ),
+
+            const SizedBox(height: 10),
+            // Deskripsi aplikasi
+            const Text(
+              "Aplikasi pemesanan mobil yang mudah dan cepat.",
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black54,
+              ),
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),
