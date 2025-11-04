@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screen/splash_screen3.dart';
 
 class SplashScreen2 extends StatelessWidget {
   const SplashScreen2({super.key});
@@ -14,13 +15,13 @@ class SplashScreen2 extends StatelessWidget {
           children: [
             // Gambar ilustrasi
             Image.asset(
-              'assets/images/splash2.png', // pastikan file ini ada
+              'assets/images/splash2.png',
               width: 250,
               height: 250,
             ),
             const SizedBox(height: 40),
 
-            // 🔹 Teks judul
+            // Judul
             const Text(
               "Temukan Mobil Impian Anda",
               style: TextStyle(
@@ -33,7 +34,7 @@ class SplashScreen2 extends StatelessWidget {
 
             const SizedBox(height: 10),
 
-            // 🔹 Deskripsi
+            // Deskripsi
             const Text(
               "Nikmati pengalaman mencari mobil dengan mudah, cepat, dan terpercaya.",
               style: TextStyle(
@@ -45,13 +46,18 @@ class SplashScreen2 extends StatelessWidget {
 
             const SizedBox(height: 40),
 
-            // Tombol Next
+            // Tombol Next (diperbarui)
             SizedBox(
               width: 200,
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  // nanti diarahkan ke splash screen 3
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SplashScreen3(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueAccent,
