@@ -22,6 +22,14 @@ class _SplashScreen1State extends State<SplashScreen1> {
         _isVisible = true;
       });
     });
+
+    // 5 detik otomatis pindah ke SplashScreen2
+    Future.delayed(const Duration(seconds: 5), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const SplashScreen2()),
+      );
+    });
   }
 
    @override
