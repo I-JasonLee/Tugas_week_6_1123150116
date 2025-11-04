@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screen/splash_screen2.dart';
 
 class SplashScreen1 extends StatelessWidget {
   const SplashScreen1({super.key});
@@ -11,9 +12,9 @@ class SplashScreen1 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Logo aplikasi (gunakan asset image)
+            // Logo
             Image.asset(
-              'assets/images/logo.png', // pastikan file logo ada di folder assets/images/
+              'assets/images/logo.png',
               width: 150,
               height: 150,
             ),
@@ -47,7 +48,12 @@ class SplashScreen1 extends StatelessWidget {
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  // Nanti akan diarahkan ke Splash Screen 2
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SplashScreen2(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueAccent,
