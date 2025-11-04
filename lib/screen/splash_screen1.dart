@@ -39,6 +39,33 @@ class SplashScreen1 extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
+
+            const SizedBox(height: 40),
+            // Tombol Continue
+            SizedBox(
+              width: 200,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: () {
+                  // Nanti akan diarahkan ke Splash Screen 2
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blueAccent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: const Text(
+                  "Continue",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+
           ],
         ),
       ),
