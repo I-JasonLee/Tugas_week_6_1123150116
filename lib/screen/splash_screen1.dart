@@ -1,15 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screen/splash_screen2.dart';
 
-class SplashScreen1 extends StatelessWidget {
+class SplashScreen1 extends StatefulWidget {
   const SplashScreen1({super.key});
+
+  @override
+  State<SplashScreen1> createState() => _SplashScreen1State();
+}
+
+class _SplashScreen1State extends State<SplashScreen1> {
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    // Delay 3 detik sebelum menampilkan konten
+    Future.delayed(const Duration(seconds: 3), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+  }
 
    @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Column(
+        child: _isLoading
+            ? const CircularProgressIndicator(
+                color: Colors.blueAccent,
+              )
+         : Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Logo
