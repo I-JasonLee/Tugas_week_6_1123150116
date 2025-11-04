@@ -119,6 +119,31 @@ class Login extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 30),
+              // Teks pemisah "Atau login dengan"
+              Row(
+                  children: const[
+                  Expanded(
+                    child: Divider(
+                      color: Colors.grey,
+                      thickness: 1,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                      "Atau login dengan",
+                      style: TextStyle(color: Colors.black54),
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(
+                      color: Colors.grey,
+                      thickness: 1,
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
