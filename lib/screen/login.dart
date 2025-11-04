@@ -193,7 +193,7 @@ class Login extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    "Belum punya akun? ",
+                    "Belum punya akun ?",
                     style: TextStyle(color: Colors.black54, fontSize: 15),
                   ),
                   GestureDetector(
@@ -211,7 +211,7 @@ class Login extends StatelessWidget {
                   ),
                 ],
               ),
-              
+
             ],
           ),
         ),
