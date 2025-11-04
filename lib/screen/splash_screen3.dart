@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screen/login.dart';
 
 class SplashScreen3 extends StatelessWidget {
   const SplashScreen3({super.key});
@@ -14,13 +15,13 @@ class SplashScreen3 extends StatelessWidget {
           children: [
             // Gambar ilustrasi
             Image.asset(
-              'assets/images/splash3.png', // pastikan file ini ada di assets
+              'assets/images/splash3.png',
               width: 250,
               height: 250,
             ),
             const SizedBox(height: 40),
 
-            // 🔹 Judul
+            // Judul
             const Text(
               "Siap untuk Memulai?",
               style: TextStyle(
@@ -32,7 +33,7 @@ class SplashScreen3 extends StatelessWidget {
             ),
             const SizedBox(height: 10),
 
-            // 🔹 Deskripsi
+            // Deskripsi
             const Text(
               "Mari mulai perjalanan Anda bersama kami, temukan mobil terbaik hanya dengan satu sentuhan.",
               style: TextStyle(
@@ -44,13 +45,18 @@ class SplashScreen3 extends StatelessWidget {
 
             const SizedBox(height: 40),
 
-            // Tombol Get Started
+            // Tombol Get Started (diperbarui)
             SizedBox(
               width: 200,
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  // nanti diarahkan ke halaman login
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Login(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueAccent,
