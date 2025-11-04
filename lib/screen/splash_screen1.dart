@@ -1,6 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screen/splash_screen2.dart';
 
+void fadeTo(BuildContext context, Widget nextPage) {
+  Navigator.pushReplacement(
+    context,
+    PageRouteBuilder(
+      transitionDuration: const Duration(milliseconds: 800),
+      pageBuilder: (_, __, ___) => nextPage,
+      transitionsBuilder: (_, animation, __, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
+    ),
+  );
+}
+
 class SplashScreen1 extends StatefulWidget {
   const SplashScreen1({super.key});
 
@@ -15,6 +31,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
   @override
   void initState() {
     super.initState();
+
     // Delay 3 detik sebelum menampilkan konten
     Future.delayed(const Duration(seconds: 3), () {
       setState(() {
@@ -23,12 +40,10 @@ class _SplashScreen1State extends State<SplashScreen1> {
       });
     });
 
-    // 5 detik otomatis pindah ke SplashScreen2
+    // Auto navigasi 5 detik ke SplashScreen2
     Future.delayed(const Duration(seconds: 5), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const SplashScreen2()),
-      );
+      if (!mounted) return;
+      fadeTo(context, const SplashScreen2());
     });
   }
 
@@ -38,22 +53,14 @@ class _SplashScreen1State extends State<SplashScreen1> {
       backgroundColor: Colors.white,
       body: Center(
         child: _isLoading
-            ? const CircularProgressIndicator(
-                color: Colors.blueAccent,
-              )
+            ? const CircularProgressIndicator(color: Colors.blueAccent)
             : AnimatedOpacity(
                 opacity: _isVisible ? 1.0 : 0.0,
                 duration: const Duration(seconds: 1),
-                curve: Curves.easeIn,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                  // Logo
-                    Image.asset(
-                      'assets/images/logo.png',
-                      width: 150,
-                      height: 150,
-                    ),
+                    Image.asset('assets/images/logo.png', width: 150, height: 150),
 
             const SizedBox(height: 20),
             // Nama aplikasi
@@ -83,14 +90,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
               width: 200,
               height: 50,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SplashScreen2(),
-                    ),
-                  );
-                },
+                onPressed: () => fadeTo(context, const SplashScreen2()),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueAccent,
                   shape: RoundedRectangleBorder(

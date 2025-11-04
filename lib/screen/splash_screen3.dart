@@ -1,6 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screen/login.dart';
 
+void fadeTo(BuildContext context, Widget nextPage) {
+  Navigator.pushReplacement(
+    context,
+    PageRouteBuilder(
+      transitionDuration: const Duration(milliseconds: 800),
+      pageBuilder: (_, __, ___) => nextPage,
+      transitionsBuilder: (_, animation, __, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
+    ),
+  );
+}
+
 class SplashScreen3 extends StatelessWidget {
   const SplashScreen3({super.key});
 
@@ -50,14 +66,7 @@ class SplashScreen3 extends StatelessWidget {
               width: 200,
               height: 50,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const Login(),
-                    ),
-                  );
-                },
+                onPressed: () => fadeTo(context, const Login()),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueAccent,
                   shape: RoundedRectangleBorder(
